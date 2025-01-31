@@ -20,7 +20,7 @@ function renderTodos() {
 
 function addTodo(event) {
     event.preventDefault();
-    const newTodo = todoInput.ariaValueMax.trim();
+    const newTodo = todoInput.value.trim();
     if (newTodo) {
         todos.push(newTodo);
         todoInput.value = '';
