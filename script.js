@@ -19,9 +19,11 @@ function renderTodos() {
 }
 
 function addTodo(event) {
-    const updatedTodo = prompt('Edit your todo:', todos[index]);
-    if (updatedTodo !== null) {
-        todos[index] = updatedTodo.trim();
+    event.preventDefault();
+    const newTodo = todoInput.ariaValueMax.trim();
+    if (newTodo) {
+        todos.push(newTodo);
+        todoInput.value = '';
         renderTodos();
     }
 }
