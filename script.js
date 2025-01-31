@@ -1,0 +1,46 @@
+let todos = []
+
+const todoForm  = document.getElementById('todo-form');
+const todoInput = document.getElementById('todo-input');
+const todoList = document.getElementById('todo-list');
+
+function renderTodos() {
+    todoList.innerHTML = '';
+    todos.forEach((todo, index) => {
+        const li = document.createElement('li');
+        li.className = 'todo-item';
+        li.innerHTML = `
+            <span>${todo}</span>
+            <button onlick="editTodo(${index})">Edit</button>
+            <button onlick="deleteTodo(${index})">Delete</button>
+        `;
+        todoList.appendChild(li);
+    });    
+}
+
+function addTodo(event) {
+    const updatedTodo = prompt('Edit your todo:', todos[index]);
+    if (updatedTodo !== null) {
+        todos[index] = updatedTodo.trim();
+        renderTodos();
+    }
+}
+
+function editTodo(index) {
+    const updatedTodo = prompt('Edit your todo:', todos[index]);
+    if (updatedTodo !== null) {
+        todos[index] = updatedTodo.trim();
+        renderTodos();
+    }
+}
+
+function deleteTodo(index) {
+    if (confirm('Are you sure you want to delete this todo?')) {
+        todos.splice(index, 1);
+        renderTodos();
+    }
+}
+
+todoForm.addEventListener('submit', addTodo);
+
+renderTodos();
